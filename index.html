@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mondrian Project</title>
+  <style>
+    /* CSS Variables for easy color management */
+    :root {
+      --line-color: #000;
+      --white: #F0F1EC;
+      --red: #E72F24;
+      --black: #232629;
+      --blue: #004592;
+      --yellow: #F9D01E;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 0;
+      background-color: var(--white);
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      width: 100%;
+      background-color: var(--line-color);
+      color: var(--white);
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-sizing: border-box;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-icons a {
+      color: var(--white);
+      text-decoration: none;
+      font-size: 20px;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: var(--yellow);
+    }
+
+    .container {
+      width: 80vw;
+      height: 80vh;
+      display: grid;
+      background-color: var(--line-color);
+      grid-template-columns: 40% 25% 25% 10%;
+      grid-template-rows: 55% 17% 20% 8%;
+      gap: 1%;
+      margin-top: 80px; /* Margin to ensure space for the fixed header */
+    }
+
+    .item {
+      background-color: var(--white);
+    }
+
+    .red {
+      background-color: var(--red);
+    }
+
+    .white1 {
+      grid-column: span 3;
+    }
+
+    .white2 {
+      grid-row: span 2;
+    }
+
+    .white3 {
+      grid-area: 2 / 2 / 4 / 4;
+    }
+
+    .blue {
+      background-color: var(--blue);
+      border-bottom: 10px solid var(--line-color);
+    }
+
+    .white4 {
+      grid-row: span 2;
+    }
+
+    .yellow {
+      background-color: var(--yellow);
+    }
+
+    .black {
+      background-color: var(--black);
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: var(--line-color);
+      color: var(--white);
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    button:hover {
+      background-color: var(--black);
+      color: var(--yellow);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 95vw;
+        height: auto;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+        margin-top: 60px; /* Adjusted margin for smaller screens */
+      }
+
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Mondrian Paint Project</h1>
+    <div class="social-icons">
+      <a href="https://www.instagram.com/nifrwon/?hl=ar" target="_blank">Instagram</a>
+      <a href="https://x.com/nifrwon" target="_blank">X</a>
+      <a href="https://github.com/nifrwon?tab=repositories" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/abdulbaset-saleh-a9b18a328/" target="_blank">LinkedIn</a>
+      <a href="https://www.youtube.com/@nifrwon" target="_blank">Youtube</a>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="item red"></div>
+    <div class="item white1"></div>
+    <div class="item white2"></div>
+    <div class="item white3"></div>
+
+    <div class="item blue"></div>
+    <div class="item white4"></div>
+
+    <div class="item"></div>
+    <div class="item yellow"></div>
+    <div class="item black"></div>
+  </div>
+
+  <button onclick="randomizeColors()">Randomize Colors</button>
+
+  <script>
+    function randomizeColors() {
+      const colors = ['var(--white)', 'var(--red)', 'var(--blue)', 'var(--yellow)', 'var(--black)'];
+      document.querySelectorAll('.item').forEach(item => {
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        item.style.backgroundColor = randomColor;
+      });
+    }
+  </script>
+
+</body>
+</html>
